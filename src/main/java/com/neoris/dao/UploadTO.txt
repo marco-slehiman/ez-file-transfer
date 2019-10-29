@@ -1,0 +1,67 @@
+package com.neoris.dao;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.Date;
+
+
+/**
+ * The persistent class for the UPLOADS database table.
+ * 
+ */
+@Entity
+@Table(name="UPLOADS")
+@NamedQuery(name="UploadTO.findAll", query="SELECT u FROM UploadTO u")
+public class UploadTO implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name="EMAIL_FROM")
+	private String emailFrom;
+
+	@Column(name="EMAIL_TO")
+	private String emailTo;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="UPLOADED_DATE")
+	private Date uploadedDate;
+
+	public UploadTO() {
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmailFrom() {
+		return this.emailFrom;
+	}
+
+	public void setEmailFrom(String emailFrom) {
+		this.emailFrom = emailFrom;
+	}
+
+	public String getEmailTo() {
+		return this.emailTo;
+	}
+
+	public void setEmailTo(String emailTo) {
+		this.emailTo = emailTo;
+	}
+
+	public Date getUploadedDate() {
+		return this.uploadedDate;
+	}
+
+	public void setUploadedDate(Date uploadedDate) {
+		this.uploadedDate = uploadedDate;
+	}
+
+}

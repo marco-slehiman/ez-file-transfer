@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="email.xslt"?>
+<ezFileTransfer>
+   <emailFrom>marco.slehiman@neoris.com</emailFrom>
+   <emailTo>marco.slehiman@neoris.com</emailTo>
+   <fileName>eclipse-for-jee.zip</fileName>
+   <message>Este es in correo de prueba </message>
+   <download-url>https://marcoslehiman</download-url>
+   <process-date>Septiembre 6, 2017</process-date>
+   <files>
+      <file>Windows6.1-KB968211-x64-RefreshPkg.msu</file>
+   </files>
+</ezFileTransfer>
