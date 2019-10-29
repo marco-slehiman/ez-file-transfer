@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	<f:loadBundle var="labels" basename="com.neoris.bundle.labels"></f:loadBundle>
+	<div class="header">
+		<h:form id="menu">
+			<ul class="nav nav-pills pull-right">
+				<li class="#{paginaActual == 'catalogs' ? 'active' : 'dummy'}"><a
+					href="#" class="dropdown-toggle" data-toggle="dropdown"><h:outputText value="#{labels['menu.catalogs']}" escape="false"/><span
+						class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+					    <li class="dropdown-header"> <h:outputText value="#{labels['menu.catalogs.security']}"  escape="false"/> </li>
+						<li><h:commandLink action="users"><h:outputText value="#{labels['menu.catalogs.users']}"  escape="false"/></h:commandLink></li>
+						<li><h:commandLink action="rols"><h:outputText value="#{labels['menu.catalogs.rols']}"  escape="false"/></h:commandLink></li>
+						<li class="divider"></li>
+					    <li class="dropdown-header"> <h:outputText value="#{labels['menu.catalogs.application']}" escape="false"/> </li>
+						<li><h:commandLink action="departaments"><h:outputText value="#{labels['menu.catalogs.departaments']}"  escape="false"/></h:commandLink></li>
+						<li><h:commandLink action="technologies" ><h:outputText value="#{labels['menu.catalogs.technologies']}"  escape="false"/></h:commandLink></li>
+						<li><h:commandLink action="modules"><h:outputText value="#{labels['menu.catalogs.modules']}"  escape="false"/></h:commandLink></li>
+					</ul></li>
+				<li class="#{paginaActual == 'operacion' ? 'active' : 'dummy'}">
+				   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h:outputText value="#{labels['menu.operation']}" escape="false" /><span
+						class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><h:commandLink action="evento" value="Evento" ></h:commandLink></li>
+					</ul></li>
+				<li class="#{paginaActual == 'support' ? 'active' : 'dummy'}"><a
+					href="#" class="dropdown-toggle" data-toggle="dropdown">Support<span
+						class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><h:commandLink action="chat" value="Chat" /></li>
+						<li><h:commandLink action="fileTransfer"
+								value="File Transfer" /></li>
+					</ul></li>
+				<li class="#{paginaActual == 'salir' ? 'active' : 'dummy'}">
+				    <h:commandLink action="#{userSession.closeSession}" value="#{labels['menu.sign-out']}" /></li>
+			</ul>
+			<h3 class="text-muted">
+				<h:outputText value="#{labels['menu.title']}" />
+			</h3>
+		</h:form>
+	</div>
+</ui:composition>

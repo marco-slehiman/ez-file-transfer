@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <f:loadBundle var="labels" basename="com.neoris.bundle.labels"/>
+    <ui:include src="/head.xhtml" />
+    <h:body>
+        <div class="container">
+            <ui:include src="/menu.xhtml">
+                <ui:param name="paginaActual" value="catalogos" />
+            </ui:include>
+            <h3><h:outputText value="#{labels['catalog.users.edition.title']}" /></h3>
+            <h:panelGroup layout="block" styleClass="general-content">
+                <h:form enctype="multipart/form-data" role="form" prependId="false"
+                        id="busquedaPorFechas">
+                    <h:panelGroup id="identificador" layout="block"
+                                  styleClass="form-group">
+                        <h:outputLabel value="#{labels['catalog.users.user-name']}" for="userName"
+                                       escape="false" />
+                        <h:inputText id="userName"
+                                     value="#{users.userTO.userName}"
+                                     styleClass="form-control" disabled="true">
+                        </h:inputText>
+                    </h:panelGroup>
+                    <h:panelGroup id="nombre-panel" layout="block"
+                                  styleClass="form-group">
+                        <h:outputLabel value="#{labels['catalog.users.password']}" for="nombre"
+                                       escape="false" />
+                        <h:inputText id="nombre"
+                                     value="#{users.userTO.userPass}"
+                                     styleClass="form-control" required="true" requiredMessage="La cntraseña es requerida">
+                        </h:inputText>
+                    </h:panelGroup>
+                     <h:panelGrid columns="2">
+                         <h:commandLink action="#{users.cancel}" value="#{labels['catalog.users.cancel']}"
+                                       styleClass="btn btn-danger" />
+                         <h:commandLink action="#{users.update}" value="#{labels['catalog.users.update']}"
+                                       styleClass="btn btn-primary" />
+                    </h:panelGrid>
+                </h:form>
+                <h:messages></h:messages>
+            </h:panelGroup>
+        </div>
+        <ui:include src="/footer.xhtml" />
+
+    </h:body>
+</html>

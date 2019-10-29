@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <f:loadBundle var="labels" basename="com.neoris.bundle.labels"/>
+    <ui:include src="/head.xhtml" />
+    <h:body>
+        <div class="container">
+            <ui:include src="/menu.xhtml">
+                <ui:param name="paginaActual" value="catalogs" />
+            </ui:include>
+            <h:form enctype="multipart/form-data" role="form" prependId="false">
+                <h:panelGroup layout="block" styleClass="general-content">
+                    <div class="panel-heading" style="text-align: center;">
+                        <h3 class="panel-title">Users</h3>
+                        <ul class="pagination">
+                            <li class="#{users.theFirstPage ? 'disabled' : 'enabled'}">
+                                <h:commandLink action="#{users.page}" title="#{labels['navigation.first']}" disabled="#{users.theFirstPage}">
+                                    <span class="glyphicon glyphicon-fast-backward"></span>
+                                    <f:setPropertyActionListener target="#{users.currentPage}" value="1" />
+                                </h:commandLink>
+                            </li>
+                            <li class="#{users.theFirstPage ? 'disabled' : 'enabled'}">
+                                <h:commandLink action="#{users.page}" title="#{labels['navigation.previous']}" disabled="#{users.theFirstPage}" p:data-toggle="modal" p:data-target="#myModal">
+                                    <span class="glyphicon glyphicon-backward"></span>
+                                        <f:setPropertyActionListener target="#{users.currentPage}" value="#{users.currentPage-1}" />
+                                </h:commandLink>
+                            </li>
+                            <li class="active" >
+                                <h:commandLink id="addRecord" action="#{users.creation}" title="#{labels['navigation.add-record']}" 
+                                   style="cursor: pointer;" p:data-toggle="tooltip" p:data-placement="auto">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </h:commandLink>
+                            </li>
+                            <li class="active">
+                                <span>
+                                    <!-- Error comun se combinan parametros y texto en codigo duro -->
+                                    <h:outputText value="P&#225;gina #{users.currentPage} de #{users.pageCount}" escape="false"/>
+                                </span>
+                            </li>
+                            <li class="#{users.theLastPage ? 'disabled' : 'enabled'}">
+                                <h:commandLink action="#{users.page}" title="#{labels['navigation.next']}" disabled="#{users.theLastPage}">
+                                    <span class="glyphicon glyphicon-forward"></span>
+                                    <f:setPropertyActionListener target="#{users.currentPage}" value="#{users.currentPage+1}" />
+                                </h:commandLink>
+                            </li>
+                            <li class="#{users.theLastPage ? 'disabled' : 'enabled'}">
+                                <h:commandLink action="#{users.page}" title="#{labels['navigation.last']}" disabled="#{users.theLastPage}">
+                                    <span class="glyphicon glyphicon-fast-forward"></span>
+                                    <f:setPropertyActionListener target="#{users.currentPage}" value="#{users.pageCount}" />
+                                </h:commandLink>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><h:outputText value="#{labels['catalog.users.list.title']}" /></h3>
+                        </div>
+                        <div class="panel-body">
+                            <h:dataTable value="#{users.data}" var="user" styleClass="table table-striped" first="#{users.currentRow}" rows="#{users.rowsByPage}">
+                                <h:column>
+                                    <f:facet name="header">Actions</f:facet>
+                                    <h:commandLink action="#{users.edition}" styleClass="btn btn-default btn-xs" title="Editar Usuario">
+                                        <f:setPropertyActionListener target="#{users.userName}" value="#{user.userName}" />
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </h:commandLink> 
+                                    <h:commandLink action="#{users.remove}" styleClass="btn btn-default btn-xs" title="Eliminar Usuario">
+                                        <f:setPropertyActionListener target="#{users.userName}" value="#{user.userName}" />
+                                        <f:ajax></f:ajax>
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                    </h:commandLink>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Usuario</f:facet>
+                                    <h:outputText value="#{user.userName}" />
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"></f:facet>
+                                    <h:commandLink action="#{consultaCFDI.consultar}" styleClass="btn btn-lg btn-primary btn-xs" title="Ver detalle">
+                                        <span class="glyphicon glyphicon-scale"></span>
+                                        <f:param name="rfcEmisor" value="#{comprobante.comprobanteTOPK.rfcEmisor}" />
+                                        <f:param name="id" value="#{comprobante.comprobanteTOPK.id}" />
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </div>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&#38;times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&#38;hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+        <ui:include src="/footer.xhtml" />        
+        <script>
+        $(function(){
+            $('[data-toggle=tooltip]').tooltip();
+          });
+	        </script>
+    </h:body>
+</html>
+

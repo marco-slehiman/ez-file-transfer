@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:include src="/support/fileTransfer-head.xhtml" />
+<h:body>
+	<h:panelGroup layout="block" styleClass="container">
+		<ui:include src="/menu.xhtml">
+			<ui:param name="paginaActual" value="support" />
+		</ui:include>
+		<noscript>
+			<div class="noscript">
+				<h2 style="color: #ff0000">Este sitio utiliza websockets y
+					requiere que el navegador tenga habilitado Javascript.&#10;Por
+					favor habilite javascript he intente recargar esta p&#225;gina.</h2>
+			</div>
+		</noscript>
+        <div id="progressBarDiv" class="progress">
+        <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" >
+           <span id="progressText">0% Complete</span>
+         </div>
+        </div>
+		<div class="form-group">
+			<label for="emailFrom">Tu cuenta de correo electr&#243;nico</label> 
+			<input type="email" class="form-control" id="emailFrom"
+				placeholder="Cuenta de correo electr&#243;nico de quien env&#237;a el documento / archivo" />
+		</div>
+		<div class="form-group">
+			<label for="emailTo">Cuenta de correo electr&#243;nico de tu amigo / compa&#241;ero</label> 
+			<input type="email" class="form-control" id="emailTo"
+				placeholder="Cuenta de correo electr&#243;nico de quien recibe el documento / archivo" />
+		</div>
+		<div class="form-group">
+			<label for="emailMessage">Mensaje</label>
+			<textarea class="form-control" id="emailMessage" rows="3"></textarea> 
+		</div>
+		<div class="form-group">
+			<label for="files">Seleccione documento / archivo a enviar</label> 
+            <input  class="form-control" type="file" id="files" name="file"/>
+		</div>
+		<button id="fileTransferButton" class="btn btn-primary" onclick="transferFile();">Iniciar Carga	</button>
+		<h2 id="fileTransferMessages"></h2>
+	</h:panelGroup>
+	<ui:include src="/footer.xhtml" />
+</h:body>
+</html>

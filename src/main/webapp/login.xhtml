@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+   <f:loadBundle var="labels" basename="com.neoris.bundle.labels"/>
+    <h:head>
+        <title><h:outputText value="#{labels['app.title']}" /></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link type="text/css" rel="stylesheet" href="${application.contextPath}/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="${application.contextPath}/css/login.css" />
+        <link rel="shortcut icon" type='image/x-icon'  href="${pageContext.request.localPort}${application.contextPath}/imagenes/favicon.ico" />
+    </h:head>
+    
+    <h:body>
+        <div class="container">
+            <div style="width: 100%; text-align: center;">
+                <h1 class="form-signin-heading"><h:outputText value="#{labels['app.title']}" /></h1><br />
+                <h:graphicImage url="/imagenes/logo.png" alt="Desarrollo Propiedad de NEORIS" title="Desarrollo Propiedad de NEORIS"></h:graphicImage>
+            </div>
+            <form class="form-signin" action="j_security_check"  method="post">
+                <input type="text" class="form-control" placeholder="#{labels['user']}" name="j_username" /> 
+                <input type="password" class="form-control" placeholder="#{labels['password']}" name="j_password" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit"><h:outputText value="#{labels['start-session']}" escape="false"/></button>
+            </form>
+        </div>
+        
+    </h:body>
+</html>
+

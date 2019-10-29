@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<title>Neoris ez file Transfer</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link type="text/css" rel="stylesheet"
+			href="${application.contextPath}/css/bootstrap.min.css" />
+		<link type="text/css" rel="stylesheet"
+			href="${application.contextPath}/css/application.css" />
+		<link type="text/css" rel="stylesheet"
+			href="${application.contextPath}/css/fileTransfer.css" />
+		<h:outputText escape="false"
+			value="&lt;!--[if lt IE 9]&gt; &lt;script src='${application.contextPath}/js/html5shiv.js' &gt;&lt;/script&gt;  &lt;script src='${application.contextPath}/js/respond.js' &gt;&lt;/script&gt;  &lt;![endif]--&gt;" />
+		<script type="text/javascript"
+			src="${application.contextPath}/js/fileTransfer.jsp" />
+		<style>
+
+#progressBarDiv {
+    visibility: hidden;
+}
+#progressBar {
+    visibility: hidden;
+	width: 0%;
+}
+#fileTransferMessages{
+}
+</style>
+
+
+	</h:head>
+</ui:composition>
